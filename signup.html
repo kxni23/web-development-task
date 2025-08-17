@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - Kanika's Pink To-Do Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #3b2e3a;
+    }
+
+    /* Blurred Background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: url('https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=1740&q=80') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(3px);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(255, 245, 245, 0.3);
+      z-index: -1;
+    }
+
+    header {
+      background-color: #ffffffef;
+      color: #4c2c35;
+      padding: 20px 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    .quote {
+      font-size: 14px;
+      margin-top: 5px;
+      font-style: italic;
+    }
+
+    .signup-box {
+      background-color: #f7f7f7c3;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.3);
+      max-width: 400px;
+      margin: 60px auto;
+    }
+
+    .signup-box h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #62344e;
+    }
+
+    .signup-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #e9c6d0cc;
+      font-size: 15px;
+    }
+
+    .signup-box button {
+      width: 100%;
+      padding: 12px;
+      background-color: #62344e;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .signup-box button:hover {
+      background-color: #4c2c3f;
+    }
+
+    .back-login {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .back-login a {
+      color: #62344e;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sign Up</h1>
+    <p class="quote">"Join the productivity journey in purple!"</p>
+  </header>
+
+  <section class="signup-box">
+    <h3>Create Your Account</h3>
+    <input type="text" placeholder="Your Full Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <input type="password" placeholder="Create a Password" required />
+    <input type="password" placeholder="Confirm Password" required />
+    <button onclick="signUp()">Sign Up</button>
+
+    <div class="back-login">
+      Already have an account? <a href="todo.html" style="color:#62344e; font-weight:bold; text-decoration: underline;"> Login here </a>
+    </div>
+  </section>
+
+  <script>
+    function signUp() {
+      alert("Sign-up successful! You can now log in.");
+      window.location.href = "todo.html";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CS Contact Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1740&q=80') no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .contact-container {
+      background: rgba(14, 14, 14, 0.6);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 500px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .contact-container:hover {
+      transform: scale(1.01);
+    }
+
+    .contact-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #f8f6f6;
+      font-size: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #fff4f4;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #e9e1e1;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.2s ease;
+      background-color: #252323d0;
+      color: #fff;
+    }
+
+    .form-group input:focus {
+      border-color: #eef1f4;
+      outline: none;
+      background-color: #ffffff;
+      color: #000;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background: #fbfbfc;
+      color: rgb(28, 28, 28);
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background: #ffffff66;
+    }
+
+    .status-msg {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      color: red;
+    }
+
+    @media (max-width: 600px) {
+      .contact-container {
+        padding: 25px;
+        margin: 15px;
+      }
+
+      .contact-container h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <div class="form-group">
+        <label for="name">Your Name *</label>
+        <input type="text" id="name" placeholder="e.g. Kanika" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" placeholder="e.g. kanika@example.com" required />
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact Number *</label>
+        <input type="tel" id="contact" placeholder="e.g. 9876543210" pattern="[0-9]{10}" required />
+      </div>
+      <button class="submit-btn" type="submit">Submit Details</button>
+      <p class="status-msg" id="statusMsg"></p>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const statusMsg = document.getElementById('statusMsg');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const contact = document.getElementById('contact').value.trim();
+
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      const contactPattern = /^[0-9]{10}$/;
+
+      if (!name || !email || !contact) {
+        statusMsg.textContent = 'All fields are required!';
+        return;
+      }
+
+      if (!email.match(emailPattern)) {
+        statusMsg.textContent = 'Please enter a valid email address!';
+        return;
+      }
+
+      if (!contact.match(contactPattern)) {
+        statusMsg.textContent = 'Please enter a valid 10-digit contact number!';
+        return;
+      }
+
+      statusMsg.style.color = 'lightgreen';
+      statusMsg.textContent = 'Details submitted successfully!';
+      form.reset();
+
+      setTimeout(() => {
+        statusMsg.textContent = '';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
