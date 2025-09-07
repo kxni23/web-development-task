@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Listing</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+      color: #333;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #4b2eff;
+      margin-bottom: 20px;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-group button {
+      margin: 5px;
+      padding: 10px 16px;
+      border: none;
+      background: #5f4b8b;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .filter-group button.active,
+    .filter-group button:hover {
+      background: #3c2a7d;
+    }
+
+    .sort-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    select {
+      padding: 6px 10px;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+
+    .product-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product-info {
+      margin-top: 10px;
+    }
+
+    .product-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .product-info p {
+      font-size: 0.9rem;
+    }
+
+    .price {
+      color: #2c3e50;
+      font-weight: bold;
+    }
+
+    .rating {
+      color: #f39c12;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Explore Products</h1>
+    <div class="controls">
+      <div class="filter-group">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="electronics">Electronics</button>
+        <button class="filter-btn" data-category="clothing">Clothing</button>
+        <button class="filter-btn" data-category="accessories">Accessories</button>
+      </div>
+      <div class="sort-group">
+        <label for="sort">Sort by:</label>
+        <select id="sort">
+          <option value="default">Default</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating-desc">Rating: High to Low</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="product-container" id="product-list"></div>
+  </main>
+
+  <script>
+    const products = [
+
+  {
+    id: 1,
+    name: "Wireless Headphones",
+    category: "electronics",
+    price: 1999,
+    rating: 4.3,
+    image: "https://picsum.photos/id/180/300/180"
+  },
+  {
+    id: 2,
+    name: "Men's Jacket",
+    category: "clothing",
+    price: 2999,
+    rating: 4.7,
+    image: "https://picsum.photos/id/1062/300/180"
+  },
+  {
+    id: 3,
+    name: "Smart Watch",
+    category: "electronics",
+    price: 3499,
+    rating: 4.6,
+    image: "https://picsum.photos/id/1/300/180"
+  },
+  {
+    id: 4,
+    name: "Ladies Handbag",
+    category: "accessories",
+    price: 899,
+    rating: 4.1,
+    image: "https://picsum.photos/id/103/300/180"
+  },
+  {
+    id: 5,
+    name: "Bluetooth Speaker",
+    category: "electronics",
+    price: 1299,
+    rating: 4.4,
+    image: "https://picsum.photos/id/1080/300/180"
+  },
+  {
+    id: 6,
+    name: "Denim Jeans",
+    category: "clothing",
+    price: 1799,
+    rating: 4.0,
+    image: "https://picsum.photos/id/238/300/180"
+  }
+];
+
+
+
+    const productList = document.getElementById("product-list");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const sortSelect = document.getElementById("sort");
+
+    let currentCategory = "all";
+    let currentSort = "default";
+
+    function displayProducts(items) {
+      productList.innerHTML = "";
+
+      items.forEach((product) => {
+        productList.innerHTML += `
+          <div class="product-card">
+            <img src="${product.image}" alt="${product.name}" />
+            <div class="product-info">
+              <h3>${product.name}</h3>
+              <p class="price">₹${product.price}</p>
+              <p class="rating">⭐ ${product.rating}</p>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function applyFilters() {
+      let filtered = [...products];
+
+      if (currentCategory !== "all") {
+        filtered = filtered.filter(p => p.category === currentCategory);
+      }
+
+      switch (currentSort) {
+        case "price-asc":
+          filtered.sort((a, b) => a.price - b.price);
+          break;
+        case "price-desc":
+          filtered.sort((a, b) => b.price - a.price);
+          break;
+        case "rating-desc":
+          filtered.sort((a, b) => b.rating - a.rating);
+          break;
+      }
+
+      displayProducts(filtered);
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentCategory = btn.dataset.category;
+        applyFilters();
+      });
+    });
+
+    sortSelect.addEventListener("change", (e) => {
+      currentSort = e.target.value;
+      applyFilters();
+    });
+
+    displayProducts(products);
+  </script>
+</body>
+</html>
