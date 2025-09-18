@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>Kanika's Portfolio</title>
+  <link rel="stylesheet" href="st.css"/>
+  <script defer src="scr.js"></script>
+</head>
+<body>
+  <div class="main-container">
+
+    <!-- Header -->
+    <header>
+      <div class="container center">
+        <h1>Kanika Kumanan</h1>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="container center">
+        <h2>Hi, I'm Kanika 👋</h2>
+        <p>A passionate web developer building fast and responsive websites.</p>
+        <a href="#projects" class="btn">View Projects</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container section-card center">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <p>
+          Hi, I’m <strong>Kanika Kumanan</strong>, a final-year B.Tech Information Technology student with a passion for building thoughtful and impactful digital solutions.
+          I specialize in frontend development using <strong>HTML, CSS, and JavaScript</strong> and have hands-on experience creating responsive, user-friendly web applications.
+        </p><br/>
+        <p>
+          I enjoy blending creativity with clean code, whether it’s building a professional portfolio, a productivity tool, or a memory vault that touches hearts. My goal is to always deliver intuitive user experiences, optimized performance, and mobile-friendly interfaces.
+        </p><br/>
+        <p>
+          I am also an active member of the <strong>National Cadet Corps (NCC)</strong>, which has strengthened my discipline, teamwork, and leadership skills. I'm constantly learning and love exploring new technologies that push my boundaries.
+        </p><br/>
+        <p>
+          Let’s connect and build something amazing!
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container section-card center">
+      <h2>Projects</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3><a href="future.html" style="color: #bb86fc;">Future Vault</a></h3>
+          <p>A memory-preserving web app that stores and unlocks memories on a future date.</p>
+        </div>
+        <div class="card">
+          <h3><a href="to.html" style="color: #bb86fc;">To-Do List Dashboard</a></h3>
+          <p>A fully functional and responsive dashboard to manage daily tasks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container section-card center">
+      <h2>Contact Me</h2>
+      <form id="contact-form">
+        <input type="text" placeholder="Your Name" required/>
+        <input type="email" placeholder="Your Email" required/>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container center">
+        <p>&copy; 2025 Kanika Kumanan. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Message sent successfully!');
+    form.reset();
+  });
+});
+
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: url('https://media.istockphoto.com/id/2190565166/video/finance-4k-corporate-business-growth-business-graph-chart-icon-diagram-charts-and-stock.jpg?s=640x640&k=20&c=Bh1CpnofgfXGyBAE6R506a7Qh54RQKvnzSIZDTNB3ZY=') no-repeat center center fixed;
+  background-size: cover;
+  color: #eaeaea;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Universal container */
+.main-container {
+  max-width: 960px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  background: #000000bb;
+  padding: 20px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+header h1 {
+  color: #bb86fc;
+  font-size: 2rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #eaeaea;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #333;
+}
+
+/* Hero */
+#hero {
+  background: linear-gradient(to right, #000000,  #000000be);
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+#hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #bb86fc;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  background: #bb86fc;
+  color: #121212;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #9a6de0;
+  color: white;
+}
+
+/* Section Titles */
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #bb86fc;
+}
+
+/* Section Layout */
+section {
+  margin-bottom: 60px;
+  padding: 20px;
+  background: #080808d5;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* About Section */
+.about-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.05rem;
+  color: #ccc;
+}
+
+/* Projects */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: #2a2a2a;
+  padding: 20px;
+  border-radius: 10px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: #bb86fc;
+  margin-bottom: 10px;
+}
+
+/* Contact */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+form input,
+form textarea {
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  background: #2c2c2c;
+  color: #fff;
+  font-size: 1rem;
+}
+
+form button {
+  padding: 12px;
+  background: #bb86fc;
+  color: #121212;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background: #9a6de0;
+  color: white;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  color: #999;
+  border-top: 1px solid #333;
+  margin-top: 40px;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Future Vault Project</title>
+  <link rel="stylesheet" href="st.css"/>
+</head>
+<body>
+  <div class="main-container">
+    <header>
+      <h1>Future Vault</h1>
+      <nav>
+        <ul>
+          <li><a href="ind.html">← Back to Portfolio</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="section-card">
+      <h2>What is Future Vault?</h2>
+      <p>
+        Future Vault is a web application designed to preserve memories. Users can upload photos, videos, or notes, set a future unlock date, and surprise themselves or others with stored moments.
+      </p>
+      <ul>
+        <li>Upload and store memories securely</li>
+        <li>Set unlock dates in the future</li>
+        <li>Visual countdown and notifications</li>
+        <li>Emotionally designed UI for memory reflection</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Kanika Kumanan</p>
+    </footer>
+  </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List Dashboard</title>
+  <link rel="stylesheet" href="st.css"/>
+</head>
+<body>
+  <div class="main-container">
+    <header>
+      <h1>To-Do List Dashboard</h1>
+      <nav>
+        <ul>
+          <li><a href="ind.html">← Back to Portfolio</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="section-card">
+      <h2>Project Overview</h2>
+      <p>
+        This project is a fully responsive to-do list dashboard where users can add, delete, and manage their tasks efficiently. Built using HTML, CSS, and JavaScript.
+      </p>
+      <ul>
+        <li>Modern, dark-themed UI</li>
+        <li>Dynamic task handling (Add/Delete)</li>
+        <li>Local Storage support</li>
+        <li>Mobile responsive layout</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Kanika Kumanan</p>
+    </footer>
+  </div>
+</body>
+</html>
+
+
+
